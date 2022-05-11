@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+
+use App\Http\Controllers\PersonController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,9 @@ Route::get('/home', function () {
 Route::get('/cities',[CityController::class,'all']);
 Route::get('/search',[CityController::class,'search']);
 Route::get('/city/{id}',[CityController::class,'edit']);
+Route::get('/people',[PersonController::class,'all']);
+Route::post('/people',[PersonController::class,'create']);
+Route::post('/people/{id}/delete',[PersonController::class,'delete']);
 
 Route::post('/city/{id}',[CityController::class,'update']);
 Route::post('/city/{id}/delete',[CityController::class,'delete']);
