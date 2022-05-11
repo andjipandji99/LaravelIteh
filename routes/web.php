@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,22 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
+Route::get('/home', function () {
+    return redirect('/people');
+});
+Route::get('/cities',[CityController::class,'all']);
+Route::get('/search',[CityController::class,'search']);
+Route::get('/city/{id}',[CityController::class,'edit']);
+
+Route::post('/city/{id}',[CityController::class,'update']);
+Route::post('/city/{id}/delete',[CityController::class,'delete']);
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
